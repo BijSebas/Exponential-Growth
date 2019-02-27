@@ -1,0 +1,39 @@
+def Exponential():
+    
+    # Provides user with information about format of coordinates given in assignments
+    print('Coordinates are always displayed as (x , y)')
+    
+    # Asks user to input two coordinates
+    x1 = int(input('\nx first coordinate?  '))
+    y1 = int(input('y first coordinate?  '))
+    x2 = int(input('x second coordinate? '))
+    y2 = int(input('y second coordinate? '))
+    
+    # Determines what coordinate is left and which one is right
+    if x1 < x2:
+        xl = x1
+        yl = y1
+        xr = x2
+        yr = y2
+    else:
+        xr = x1
+        yr = y1
+        xl = x2
+        yl = y2
+    
+    # Calculates un corrected growth factor  
+    gr = yr/yl
+    
+    # Determines whether growth factor should be corrected and if so, corrects growth factor
+    if xr - xl > 1:
+        g = gr ** (1/(xr-xl))
+    else:
+        g = gr
+    
+    # Calculates constant
+    b = yl / (g**xl)
+    
+    # Returns exponential model, gives left and right coordinates and prints the y-intercept
+    print('\ny = {}^t * {} \n\nLeft coordinate:  ({} , {}) \nRight coordinate: ({} , {})'.format(g,b,xl,yl,xr,yr))
+    
+    print('\ny intercept (start point): (0 , {})'.format(b))
